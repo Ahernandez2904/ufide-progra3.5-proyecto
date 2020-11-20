@@ -1,3 +1,23 @@
+<?php
+	include 'ConBD.php';
+	$conexion = Abrir();
+	if(isset($_POST['registrar'])) {
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre'];
+		$email = $_POST['email'];
+		$telefono = $_POST['telefono'];
+		$contrasena = $_POST['contrasena'];
+	
+		$table = 'table'; //desconocida
+		$tableValues = 'id, nombre, email, telefono, contrasena'; //desconocida, ejemplo = id,nombre,email
+		$sql = "insert into '$table' ('$tableValues') values (id,nombre,email,telefono,contrasena);";
+		$conexion->next_result();
+		if($conexion->query($sql)) { header('Location: ejercicio.php'); }
+		else { echo $conexion -> error; }
+  	}
+	Cerrar($conexion); 
+?>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -58,7 +78,6 @@
 						<li class="has-dropdown">
 							<a href="Horario.html"></a>
 							<ul class="dropdown">
-								
 								<li><a href="Horario.html">San Jose-Cartago</a></li>
 								<li><a href="Horario.html">San Jose-Puntarenas</a></li>
 								<li><a href="Horario.html">San Jose-San Carlos</a></li>
@@ -89,9 +108,6 @@
 								<li style="color:white;">Sin contacto en plena pandemia</li>
 							</ul>
 							<img src="images/sincontacto.jpeg"  width="50%" height="30%" style="display: block; margin-left: 50%;margin-top: -17%; padding-top: 10px;border: inset;padding-left: 10px;padding-bottom: 10px;padding-right: 10px;">
-							
-
-							
 								
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
@@ -104,9 +120,8 @@
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="id" >Numero de identificacion:</label>
-														<input type="text"name="id" id="id" class="form-control" required>
-															
+														<label for="id" >Número de identificación:</label>
+														<input type="text" name="id" id="id" class="form-control" required>
 														</input>
 													</div>
 												</div>
@@ -114,45 +129,41 @@
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="Nombre">Nombre completo</label>
-														<input type="text" id="Nombre" class="form-control" required>
+														<input type="text" name="nombre" id="nombre" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="telefono">Numero telefonico</label>
-														<input type="text" id="telefono" class="form-control" required>
+														<label for="telefono">Numero telefónico</label>
+														<input type="text" name="telefono" id="telefono" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Email">Correo electronico:</label>
-														<input type="email" id="Email" class="form-control" required>
+														<label for="Email">Correo electrónico:</label>
+														<input type="email" name="email" id="email" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Contrasena">Contrasena</label>
-														<input type="Password" id="Apellido2" class="form-control" required>
+														<label for="Contrasena">Contraseña</label>
+														<input type="Password" name="contrasena" id="contrasena" class="form-control" required>
 													</div>
 												</div>
 
-
 												<div class="row form-group">
 													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block" value="Registrar">
+														<input type="submit" class="btn btn-primary btn-block" name="registrar" id="registrar" value="Registrar">
 													</div>
 												</div>
 											</form>	
 										</div>
 
-										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-							
-					
 				</div>
 			</div>
 		</div>

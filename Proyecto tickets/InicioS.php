@@ -1,3 +1,20 @@
+<?php
+	include 'ConBD.php';
+	$conexion = Abrir();
+	if(isset($_POST['registrar'])) {
+		$id = $_POST['id'];
+		$nombre = $_POST['contrasena'];
+	
+		/*$table = 'table'; //desconocida
+		$tableValues = 'id, nombre, email, telefono, contrasena'; //desconocida, ejemplo = id,nombre,email
+		$sql = "insert into '$table' ('$tableValues') values (id,nombre,email,telefono,contrasena);";
+		$conexion->next_result();
+		if($conexion->query($sql)) { header('Location: ejercicio.php'); }
+		else { echo $conexion -> error; }*/
+		//logica pendiente
+  	}
+	Cerrar($conexion); 
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -85,7 +102,7 @@
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="id" >Numero de identificacion:</label>
+														<label for="id" >Numero de identificación:</label>
 														<input type="text" name="id" id="id" class="form-control" placeholder="0000000" required>
 															
 														</input>
@@ -93,8 +110,8 @@
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Contrasena">Contrasena</label>
-														<input type="Password" id="Password" class="form-control" placeholder="Contrasena" required>
+														<label for="Contrasena">Contraseña</label>
+														<input type="Password" id="contrasena" name="contrasena" class="form-control" placeholder="Contrasena" required>
 													</div>
 												</div>
 
