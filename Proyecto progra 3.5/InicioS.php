@@ -1,20 +1,3 @@
-<?php
-	include 'ConBD.php';
-	$conexion = Abrir();
-	if(isset($_POST['registrar'])) {
-		$id = $_POST['id'];
-		$nombre = $_POST['contrasena'];
-	
-		/*$table = 'table'; //desconocida
-		$tableValues = 'id, nombre, email, telefono, contrasena'; //desconocida, ejemplo = id,nombre,email
-		$sql = "insert into '$table' ('$tableValues') values (id,nombre,email,telefono,contrasena);";
-		$conexion->next_result();
-		if($conexion->query($sql)) { header('Location: ejercicio.php'); }
-		else { echo $conexion -> error; }*/
-		//logica pendiente
-  	}
-	Cerrar($conexion); 
-?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -57,22 +40,13 @@
 			
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.html"><img src="tickets-cr.png" width="200" height="80"><em></em></a></div>
+					<div id="gtco-logo"><a href="index.php"><img src="tickets-cr.png" width="200" height="80"><em></em></a></div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="Index.html">Inicio</a></li>
-						<li class="has-dropdown">
-							<a href="#Horario">Horarios de rutas</a>
-							<ul class="dropdown">
-								
-								<li><a href="#">San Jose-Cartago</a></li>
-								<li><a href="#">San Jose-Puntarenas</a></li>
-								<li><a href="#">San Jose-San Carlos</a></li>
-								<li><a href="#">San Jose-Nicoya</a></li>
-							</ul>
-						</li>
-						<li><a href="#contacto">Contacto</a></li>
+						<li><a href="Index.php">Inicio</a></li>
+						
+						
 					</ul>	
 				</div>
 			</div>
@@ -102,7 +76,7 @@
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="id" >Numero de identificación:</label>
+														<label for="id" >Numero de identificacion:</label>
 														<input type="text" name="id" id="id" class="form-control" placeholder="0000000" required>
 															
 														</input>
@@ -110,8 +84,8 @@
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Contrasena">Contraseña</label>
-														<input type="Password" id="contrasena" name="contrasena" class="form-control" placeholder="Contrasena" required>
+														<label for="Contrasena">Contrasena</label>
+														<input type="Password" id="Password" class="form-control" placeholder="Contrasena" required>
 													</div>
 												</div>
 

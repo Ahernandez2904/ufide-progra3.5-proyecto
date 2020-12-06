@@ -1,23 +1,3 @@
-<?php
-	include 'ConBD.php';
-	$conexion = Abrir();
-	if(isset($_POST['registrar'])) {
-		$id = $_POST['id'];
-		$nombre = $_POST['nombre'];
-		$email = $_POST['email'];
-		$telefono = $_POST['telefono'];
-		$contrasena = $_POST['contrasena'];
-	
-		$table = 'table'; //desconocida
-		$tableValues = 'id, nombre, email, telefono, contrasena'; //desconocida, ejemplo = id,nombre,email
-		$sql = "insert into '$table' ('$tableValues') values (id,nombre,email,telefono,contrasena);";
-		$conexion->next_result();
-		if($conexion->query($sql)) { header('Location: ejercicio.php'); }
-		else { echo $conexion -> error; }
-  	}
-	Cerrar($conexion); 
-?>
-
 <!DOCTYPE HTML>
 
 <html>
@@ -70,21 +50,12 @@
 			
 			<div class="row">
 				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo"><a href="index.html"><img src="tickets-cr.png" width="200" height="80"><em></em></a></div>
+					<div id="gtco-logo"><a href="index.php"><img src="tickets-cr.png" width="200" height="80"><em></em></a></div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="InicioS.html">Iniciar Sesion</a></li>
-						<li class="has-dropdown">
-							<a href="Horario.html"></a>
-							<ul class="dropdown">
-								<li><a href="Horario.html">San Jose-Cartago</a></li>
-								<li><a href="Horario.html">San Jose-Puntarenas</a></li>
-								<li><a href="Horario.html">San Jose-San Carlos</a></li>
-								<li><a href="Horario.html">San Jose-Nicoya</a></li>
-							</ul>
-						</li>
-						<li><a href="contact.html">Contacto</a></li>
+						<li><a href="InicioS.php">Iniciar sesión</a></li>
+						<li><a href="Horario1.php">Horario</a></li>
 						
 					</ul>	
 				</div>
@@ -103,11 +74,11 @@
 					<div class="row row-mt-15em">
 						<div class="col-md-8  animate-box fondone" data-animate-effect="fadeInUp" ">
 							<h2 class="h2titulo" >Modalidad sin contacto:</h2>
-							<ul>
-								<li style="color:white;">Preveniendo el uso de efectivo.</li>
-								<li style="color:white;">Sin contacto en plena pandemia</li>
-							</ul>
-							<img src="images/sincontacto.jpeg"  width="50%" height="30%" style="display: block; margin-left: 50%;margin-top: -17%; padding-top: 10px;border: inset;padding-left: 10px;padding-bottom: 10px;padding-right: 10px;">
+							
+							<img src="images/sincontacto.jpeg"  width="50%" height="30%" style="display: block; margin-left: 25%; padding-top: 10px;border: inset;padding-left: 10px;padding-bottom: 10px;padding-right: 10px;">
+							
+
+							
 								
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
@@ -116,12 +87,13 @@
 									
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
-											<h3 class="cursive-font">Resgistrate aqui:</h3>
+											<h3 class="cursive-font">Regístrate aquí:</h3>
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="id" >Número de identificación:</label>
-														<input type="text" name="id" id="id" class="form-control" required>
+														<label for="id" >Numero de identificación:</label>
+														<input type="text"name="id" id="id" class="form-control" required>
+															
 														</input>
 													</div>
 												</div>
@@ -129,41 +101,45 @@
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="Nombre">Nombre completo</label>
-														<input type="text" name="nombre" id="nombre" class="form-control" required>
+														<input type="text" id="Nombre" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="telefono">Numero telefónico</label>
-														<input type="text" name="telefono" id="telefono" class="form-control" required>
+														<label for="telefono">Numero telefonico</label>
+														<input type="text" id="telefono" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Email">Correo electrónico:</label>
-														<input type="email" name="email" id="email" class="form-control" required>
+														<label for="Email">Correo electronico:</label>
+														<input type="email" id="Email" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="Contrasena">Contraseña</label>
-														<input type="Password" name="contrasena" id="contrasena" class="form-control" required>
+														<input type="Password" id="Apellido2" class="form-control" required>
 													</div>
 												</div>
 
+
 												<div class="row form-group">
 													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block" name="registrar" id="registrar" value="Registrar">
+														<input type="submit" class="btn btn-primary btn-block" value="Registrar">
 													</div>
 												</div>
 											</form>	
 										</div>
 
+										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+							
+					
 				</div>
 			</div>
 		</div>
@@ -188,7 +164,7 @@
 							<i class="ti-money"></i>
 						</span>
 						<h3>Pago en cualquier lugar</h3>
-						<p>Con nuestro sistema, tienes multiples puntos de recarga en diferentes sonas del pais ademas de nuestra pagina web.</p>
+						<p>Con nuestro sistema, tienes múltiples puntos de recarga en diferentes zonas del país además de nuestra pagina web.</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -196,8 +172,8 @@
 						<span class="icon">
 							<i class="ti-map-alt"></i>
 						</span>
-						<h3>La mayoria de rutas importantes del pais</h3>
-						<p>Podes utilizar los boletos virtuales en cualquier ruta y horario que se ajuste a tu necesidad de viajar.(Podes consultar aqui los horarios de las rutas : <a class="consult" href="https://www.sanjosecostarica.org/sobre-san-jose-costa-rica/servicios/transporte-publico/rutas-y-horarios-de-autobuses/">aqui</a>)</p>
+						<h3>La mayoria de rutas importantes del país</h3>
+						<p>Podes utilizar los boletos virtuales en cualquier ruta y horario que se ajuste a tu necesidad de viajar.(Podes consultar aquí los horarios de las rutas : <a class="consult" href="Horario.php">aqui</a>)</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -206,7 +182,7 @@
 							<i class="ti-id-badge"></i>
 						</span>
 						<h3>Tarjeta sin contacto</h3>
-						<p>Con nuestro sistema es tan facil como pasar la tarjeta sobre el lector y listo! Validas tu boleto!</p>
+						<p>Con nuestro sistema es tan fácil como pasar la tarjeta sobre el lector y listo! Validas tu boleto!</p>
 					</div>
 				</div>
 				
