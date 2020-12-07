@@ -1,12 +1,5 @@
 <!DOCTYPE HTML>
 
-
-//tenemos que programar el isset del boton de rutas
-//hacer responsive la tabla
-
-
-
-
 <html>
 	<head>
 	<head>
@@ -58,8 +51,8 @@
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
 						
-						<li class="btn-cta"><a href="index.php"><span>Registrate!</span></a></li>
-						<li class="btn-cta"><a href="InicioS.php"><span>Iniciar Sesion!</span></a></li>
+						<li class="btn-cta"><a href="index.php"><span>¡Registrate!</span></a></li>
+						<li class="btn-cta"><a href="InicioS.php"><span>¡Iniciar Sesión!</span></a></li>
 					</ul>	
 				</div>
 			</div>
@@ -77,7 +70,7 @@
 		<div class="gtco-container">
 			<div class="row">
 			<div class="col-4">
-				<label>Ruta:</label>
+				<label>Ruta</label>
 				<select class="form-control" id="idRuta" name="idRuta" size="1" value="<?php echo $Registro['perfil_id']; ?>">
 					<option value="0">Seleccione</option>
 					</select>
@@ -91,8 +84,8 @@
 					<tr>
 						<th>Sentido</th>
 						<th>Horario</th>
-						<th>Cupos disponibles:</th>
-						<th>Lugar de salida:</th>	
+						<th>Cupos disponibles</th>
+						<th>Lugar de salida</th>	
 					</tr>
 				</thead>
 				<tbody>
@@ -128,8 +121,8 @@
 		<div class="gtco-container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2 class="cursive-font">Nos interesa tu opinion:</h2>
-					<p>Tu opinion es muy importante para nosotros, envianos tu cometario:</p>
+					<h2 class="cursive-font">Nos interesa tu opinión</h2>
+					<p>Tu opinión es muy importante para nosotros, envianos tu cometario.</p>
 				</div>
 			</div>
 			<div class="row animate-box">
@@ -138,8 +131,8 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<label for="email" class="sr-only">Email</label>
-								<input type="text" class="form-control" id="email" placeholder="comentario">
-								<input type="email" class="form-control" id="email" placeholder="Tu correo electronico">
+								<input type="text" class="form-control" id="email" placeholder="Comentario">
+								<input type="email" class="form-control" id="email" placeholder="Tu correo electrónico">
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
@@ -181,7 +174,8 @@
 
 				<div class="col-md-12 text-center copyright">
 					<p><small class="block">&copy;Proyecto creado por: Irene Salas, Alvaro Valverde y Alejandro Hernández.</small> 
-						<small class="block">Proyecto para Universidad Fidelitas, carrera Ing sistemas de computacion link:<a href="https://ufidelitas.ac.cr/" target="_blank"> Ufidelitas</a></a></small></p>
+						<small class="block">Proyecto para Universidad Fidelitas, carrera Ingeniería en Sistemas de Computación. <a href="https://ufidelitas.ac.cr/" target="_blank"> Ufidelitas</a></a></small>
+					</p>
 				</div>
 
 			</div>

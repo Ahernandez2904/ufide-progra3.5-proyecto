@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 
 
-//tenemos que programar el isset del boton de rutas
-//hacer responsive la tabla
 
 
 
@@ -91,8 +89,8 @@
 					<tr>
 						<th>Sentido</th>
 						<th>Horario</th>
-						<th>Cupos disponibles:</th>
-						<th>Lugar de salida:</th>	
+						<th>Cupos disponibles</th>
+						<th>Lugar de salida</th>	
 					</tr>
 				</thead>
 				<tbody>

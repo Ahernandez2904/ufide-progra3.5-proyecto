@@ -106,13 +106,13 @@
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="telefono">Numero telefonico</label>
+														<label for="telefono">Numero telefónico</label>
 														<input type="text" id="telefono" class="form-control" required>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Email">Correo electronico:</label>
+														<label for="Email">Correo electrónico:</label>
 														<input type="email" id="Email" class="form-control" required>
 													</div>
 												</div>
@@ -154,7 +154,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
 					<h2 class="cursive-font">Tickets C.R</h2>
-					<p>La experiencia de utilizar el transporte publico sin contacto en Costa Rica!</p>
+					<p>¡La experiencia de utilizar el transporte publico sin contacto en Costa Rica!</p>
 				</div>
 			</div>
 			<div class="row">
@@ -173,7 +173,7 @@
 							<i class="ti-map-alt"></i>
 						</span>
 						<h3>La mayoria de rutas importantes del país</h3>
-						<p>Podes utilizar los boletos virtuales en cualquier ruta y horario que se ajuste a tu necesidad de viajar.(Podes consultar aquí los horarios de las rutas : <a class="consult" href="Horario.php">aqui</a>)</p>
+						<p>Podes utilizar los boletos virtuales en cualquier ruta y horario que se ajuste a tu necesidad de viajar. (Podes consultar aquí los horarios de las rutas : <a class="consult" href="Horario.php">aqui</a>)</p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
@@ -182,7 +182,7 @@
 							<i class="ti-id-badge"></i>
 						</span>
 						<h3>Tarjeta sin contacto</h3>
-						<p>Con nuestro sistema es tan fácil como pasar la tarjeta sobre el lector y listo! Validas tu boleto!</p>
+						<p>¡Con nuestro sistema es tan fácil como pasar la tarjeta sobre el lector y listo! ¡Validas tu boleto!</p>
 					</div>
 				</div>
 				
@@ -237,7 +237,8 @@
 
 				<div class="col-md-12 text-center copyright">
 					<p><small class="block">&copy;Proyecto creado por: Irene Salas, Alvaro Valverde y Alejandro Hernández.</small> 
-						<small class="block">Proyecto para Universidad Fidelitas, carrera Ing sistemas de computacion link:<a href="https://ufidelitas.ac.cr/" target="_blank"> Ufidelitas</a></a></small></p>
+						<small class="block">Proyecto para Universidad Fidelitas, carrera Ingeniería en Sistemas de Computacion link:<a href="https://ufidelitas.ac.cr/" target="_blank"> Ufidelitas</a></a></small>
+					</p>
 				</div>
 
 			</div>

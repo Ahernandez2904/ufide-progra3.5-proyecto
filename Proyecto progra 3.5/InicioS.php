@@ -72,20 +72,20 @@
 									
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
-											<h3 class="cursive-font">Inicion de sesion:</h3>
+											<h3 class="cursive-font">Inicio de sesión:</h3>
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="id" >Numero de identificacion:</label>
-														<input type="text" name="id" id="id" class="form-control" placeholder="0000000" required>
+														<label for="id" >Numero de identificación:</label>
+														<input type="text" name="id" id="id" class="form-control" placeholder="123456789" required>
 															
 														</input>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="Contrasena">Contrasena</label>
-														<input type="Password" id="Password" class="form-control" placeholder="Contrasena" required>
+														<label for="Password">Contraseña</label>
+														<input type="Password" id="Password" class="form-control" placeholder="Contraseña" required>
 													</div>
 												</div>
 
@@ -96,7 +96,7 @@
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block" value="Olvide mi contrasena" href="index2.html">
+														<input type="submit" class="btn btn-primary btn-block" value="Olvide mi contraseña" href="index2.html">
 													</div>
 												</div>
 											</form>	
@@ -145,7 +145,7 @@
 
 				<div class="col-md-12 text-center copyright">
 					<p><small class="block">&copy;Proyecto creado por: Irene Salas, Alvaro Valverde y Alejandro Hernández.</small> 
-						<small class="block">Proyecto para Universidad Fidelitas, carrera Ing sistemas de computacion link:<a href="https://ufidelitas.ac.cr/" target="_blank"> Ufidelitas</a></a></small></p>
+						<small class="block">Proyecto para Universidad Fidelitas, carrera Ingeniería en Sistemas de Computación. <a href="https://ufidelitas.ac.cr/" target="_blank"> Ufidelitas</a></a></small></p>
 				</div>
 
 			</div>
