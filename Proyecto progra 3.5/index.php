@@ -1,10 +1,46 @@
+<?php
+
+	include 'ConBD.php';
+	$conexion = Abrir();
+	
+	//Llamado al procedimiento almacenado
+	//variable $ListaPerfiles
+	//IdPerfil, DescripcionPerfil
+
+  if(isset($_POST['btnAgregar']))
+  {
+	$txtCedula = $_POST['txtCedula'];
+  
+	//$sql = "call AgregarEstudiante('" . $txtCedula . "','" . $txtNombre . "')";
+	$sql = "call AgregarEstudiante('$txtCedula','$txtNombre',$cboPerfil,$txtNota1,$txtNota2,
+		$txtProyecto,$txtPromedio)";
+	
+	$conexion->next_result();
+	
+	if($conexion->query($sql))
+	{
+		header('Location: ejercicio.php');
+	}
+	else
+	{
+		echo $conexion -> error;
+	}
+  
+     
+  }
+
+	Cerrar($conexion); 
+
+?>
+
+
 <!DOCTYPE HTML>
 
 <html>
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TicketsC.R</title>
+	<title>Tickets C.R</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -69,17 +105,10 @@
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0 text-left">
-					
-
 					<div class="row row-mt-15em">
 						<div class="col-md-8  animate-box fondone" data-animate-effect="fadeInUp" ">
 							<h2 class="h2titulo" >Modalidad sin contacto:</h2>
-							
 							<img src="images/sincontacto.jpeg"  width="50%" height="30%" style="display: block; margin-left: 25%; padding-top: 10px;border: inset;padding-left: 10px;padding-bottom: 10px;padding-right: 10px;">
-							
-
-							
-								
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div class="form-wrap">
@@ -138,8 +167,6 @@
 							</div>
 						</div>
 					</div>
-							
-					
 				</div>
 			</div>
 		</div>
@@ -154,7 +181,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
 					<h2 class="cursive-font">Tickets C.R</h2>
-					<p>¡La experiencia de utilizar el transporte publico sin contacto en Costa Rica!</p>
+					<p>¡La experiencia de utilizar el transporte público sin contacto en Costa Rica!</p>
 				</div>
 			</div>
 			<div class="row">
@@ -172,7 +199,7 @@
 						<span class="icon">
 							<i class="ti-map-alt"></i>
 						</span>
-						<h3>La mayoria de rutas importantes del país</h3>
+						<h3>La mayoría de rutas importantes del país</h3>
 						<p>Podes utilizar los boletos virtuales en cualquier ruta y horario que se ajuste a tu necesidad de viajar. (Podes consultar aquí los horarios de las rutas : <a class="consult" href="Horario.php">aqui</a>)</p>
 					</div>
 				</div>

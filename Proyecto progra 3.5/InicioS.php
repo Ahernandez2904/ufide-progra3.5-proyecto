@@ -1,3 +1,31 @@
+<?php
+	session_start();
+	if(isset($_POST['btnIngresar'])) {
+		include 'ConBD.php';
+		$conexion = Abrir();
+
+		$id = $_POST['id'];
+		$Promedio = "call ConsultarPromedios('$id')"; //La clave
+		$ListaPromedios = $conexion-> query($Promedio);
+		$Registro = mysqli_fetch_array($ListaPromedios);
+	
+		if(empty($Registro)) {
+			echo "Usuario no registrado en el sistema";
+		} else {
+			$_SESSION["Nombre"] = $Registro['Nombre'];
+			$_SESSION["Cedula"] = $Registro['Cedula'];
+			$_SESSION["Perfil"] = $Registro['Perfil_Id'];
+			
+			if($Registro['Perfil_Id'] == 1) {
+				header('refresh:2;url=ejercicio.php');
+			}
+			else {
+				header('refresh:2;url=index.php');
+			}
+		} Cerrar($conexion); 
+	}
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -44,7 +72,8 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="Index.php">Inicio</a></li>
+						<li><a href="Index.php">Registrarse</a></li>
+						<li><a href="Horario1.php">Horarios</a></li>
 						
 						
 					</ul>	

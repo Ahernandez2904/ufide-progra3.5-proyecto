@@ -1,3 +1,16 @@
+<?php
+
+  session_start();
+  if(empty($_SESSION["Perfil"]))
+  {
+	  header('Location: index.php');
+  }
+  
+  //print_r($_SESSION);
+
+?>
+
+
 <!DOCTYPE HTML>
 
 <html>
