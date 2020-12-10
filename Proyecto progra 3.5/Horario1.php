@@ -1,6 +1,28 @@
 <?php
+	include 'ConBD.php';
 	session_start();
 	if(empty($_SESSION["id_cliente"])) { header('Location: InicioS.php'); }
+
+	//Cargar opciones del select
+	$conexion2 = Abrir();
+	$sql2 = "call seleccionarRutas()";
+	$Rutas2 = $conexion2-> query($sql2);
+	Cerrar($conexion2);
+
+	//Cargar rutas y horarios
+	$conexion = Abrir();
+	$idRuta = "0";
+	$sql = "call seleccionarHorarios()";
+	$Rutas = $conexion-> query($sql);
+	Cerrar($conexion);
+
+	if(isset($_POST['refrescar'])) {
+		$conexion3 = Abrir();
+		$idRuta = $_POST['idRuta'];
+		$sql3 = "call seleccionarHorarios2(".$idRuta.")";
+		$Rutas3 = $conexion3-> query($sql3);
+		Cerrar($conexion3);
+	}
 ?>
 
 <!DOCTYPE HTML>
@@ -51,8 +73,8 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li class="btn-cta"><a href="index.php"><span>¡Registrate!</span></a></li>
-						<li class="btn-cta"><a href="InicioS.php"><span>¡Iniciar Sesión!</span></a></li>
+						<li><a href="menu.php">Información de Rutas</a></li>
+						<li class="btn-cta"><a href="logout.php"><span>Cerrar sesión</span></a></li>
 					</ul>	
 				</div>
 			</div>
@@ -65,57 +87,68 @@
 	</header>
 
 	
-	
-	<div id="gtco-features">
-		<div class="gtco-container">
-			<div class="row">
-			<div class="col-4">
-				<label>Ruta</label>
-				<select class="form-control" id="idRuta" name="idRuta" size="1" value="<?php echo $Registro['perfil_id']; ?>">
-					<option value="0">Seleccione</option>
-					</select>
-			</div>
-			<br>
+		<div id="gtco-features">
+			<div class="gtco-container">
+				<form action="" method="post">
+					<div class="row">
+						<div class="col-4">
+							<label>Ruta</label>
+							<select class="form-control" id="idRuta" name="idRuta" size="1">
+								<option value="0">Mostrar todas las opciones</option>
+								<?php
+									if(empty($Rutas2)) {
+										//echo '<option value="0">No hay datos</option>';
+									} else {
+										while($fila2 = mysqli_fetch_array($Rutas2)) {
+											echo '<option value="' . $fila2["id_ruta"] . '">' . $fila2["nombre_ruta"] . '</option>';
+										}
+									}
+								?>
+							</select>
+							<input type="submit" name="refrescar" id="refrescar" class="btn btn-primary btn-block" value="Refrescar resultados">
+						</div>
+						<br>
+					</div>
+				</form>
 
-			</div>
-			<div class="row">
-				<table class="table">
-					<thead>													
-					<tr>
-						<th>Sentido</th>
-						<th>Horario</th>
-						<th>Cupos disponibles</th>
-						<th>Lugar de salida</th>	
-					</tr>
-				</thead>
-				<tbody>
-
-			<?php
-
-           if(empty($Rutas))
-           {
-             echo '<tr> <td colspan="4"> No hay datos </td> </tr>';
-           }
-           else
-           {
-
-            while($fila = mysqli_fetch_array($Rutas))
-            {
-              echo '<tr>';
-              echo '<td>'.$fila["Sentido"].'</td>';
-              echo '<td>'.$fila["Horario"].'</td>';
-			  echo '<td>'.$fila["Cupos"].'</td>';
-			  echo '<td>'.$fila["Lugar_salida"].'</td>';
-              echo '</tr>';
-            }
-          }
-           ?>
-				</tbody>
-				</table>	
+				<!--<form action="" method="post">-->
+					<div class="row">
+						<table class="table">
+							<thead>													
+								<tr>
+									<th>Sentido</th>
+									<th>Horario</th>
+									<th>Cupos disponibles</th>
+									<th>Lugar de salida</th>	
+									<th>Comprar ticket</th>
+								</tr>
+							</thead>
+							<tbody>
+	<?php
+		if(empty($Rutas)) {
+			echo '<tr> <td colspan="4"> No hay datos </td> </tr>';
+		} else {
+			if($idRuta!="0") { $Rutas = $Rutas3; } 
+				while($fila = mysqli_fetch_array($Rutas)) {
+					echo '<tr>';
+					echo '<td>'.$fila["nombre_ruta"].'</td>';
+					echo '<td>'.$fila["horario"].'</td>';
+					echo '<td>'.$fila["cupos_disponibles"].'</td>';
+					echo '<td>'.$fila["lugar_salida"].'</td>';
+					if(intval($fila["cupos_disponibles"]) > 0) {
+						echo '<td><input type="submit" id="comprar" name="comprar" class="btn btn-primary btn-block" value="Comprar"' 
+							. 'href="Reservacion.php?id_horario='.$fila["id_horario"].'"></td>';
+					} else { echo '<td><input value="Agotados" disabled class="btn btn-primary btn-block"></td>'; }
+					echo '</tr>';
+				}
+		}
+	?>
+							</tbody>
+						</table>
+					</div>
+				<!--</form>-->
 			</div>
 		</div>
-	</div>
-
 
 	<div id="gtco-subscribe">
 		<div class="gtco-container">
@@ -133,6 +166,7 @@
 								<label for="email" class="sr-only">Email</label>
 								<input type="text" class="form-control" id="email" placeholder="Comentario">
 								<input type="email" class="form-control" id="email" placeholder="Tu correo electrónico">
+								No se ha implementado por consejo del profesor de solo seguir el foco del proyecto, de igual forma es solo hacer un Stored Procedure con un insert de la información, y ahí muere el proceso.
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
@@ -192,28 +226,17 @@
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 	
-
 	<script src="js/jquery.min.js"></script>
-
 	<script src="js/jquery.easing.1.3.js"></script>
-
 	<script src="js/bootstrap.min.js"></script>
-
 	<script src="js/jquery.waypoints.min.js"></script>
-
 	<script src="js/owl.carousel.min.js"></script>
-
 	<script src="js/jquery.countTo.js"></script>
-
-
 	<script src="js/jquery.stellar.min.js"></script>
-
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
-	
 	<script src="js/moment.min.js"></script>
 	<script src="js/bootstrap-datetimepicker.min.js"></script>
-
 	<script src="js/main.js"></script>
 
 	</body>

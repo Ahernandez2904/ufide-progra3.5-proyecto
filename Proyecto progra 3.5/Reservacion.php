@@ -47,7 +47,7 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li><a href="menu.php">Informacion de Rutas</a></li>
+						<li><a href="menu.php">Información de Rutas</a></li>
 						<li><a href="Horario.php">Horarios de rutas</a></li>
 						<li class="btn-cta"><a href="Comprar.php"><span>Adquirir Tickets</span></a></li>
 						
