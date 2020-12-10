@@ -58,8 +58,9 @@
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
 						<!--<li class="active"><a href="index.php">Inicio</a></li>-->
-						<li class="has-dropdown"><a href="Horario1.php">Horarios</a></li>
 						<!--<li class="btn-cta"><a href="Comprar.php"><span>Adquirir Tickets</span></a></li>-->
+						<li><a href="Horario1.php">Horarios</a></li>
+						<li><a href="menu.php">Información de Rutas</a></li>
 						<li class="btn-cta"><a href="logout.php"><span>Cerrar sesión</span></a></li>
 						<!--<li class="btn-cta"><a href="Reservacion.php"><span>Reserve su espacio!</span></a></li>-->
 					</ul>	

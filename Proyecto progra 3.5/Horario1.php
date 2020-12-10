@@ -73,6 +73,7 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
+						<li><a href="Horario1.php">Horarios</a></li>
 						<li><a href="menu.php">Información de Rutas</a></li>
 						<li class="btn-cta"><a href="logout.php"><span>Cerrar sesión</span></a></li>
 					</ul>	
@@ -136,9 +137,8 @@
 					echo '<td>'.$fila["cupos_disponibles"].'</td>';
 					echo '<td>'.$fila["lugar_salida"].'</td>';
 					if(intval($fila["cupos_disponibles"]) > 0) {
-						echo '<td><input type="submit" id="comprar" name="comprar" class="btn btn-primary btn-block" value="Comprar"' 
-							. 'href="Reservacion.php?id_horario='.$fila["id_horario"].'"></td>';
-					} else { echo '<td><input value="Agotados" disabled class="btn btn-primary btn-block"></td>'; }
+						echo '<td><a href="Comprar.php?id_horario='.$fila["id_horario"].'"></a></td>';
+					} else { echo '<td>Agotados</td>'; }
 					echo '</tr>';
 				}
 		}

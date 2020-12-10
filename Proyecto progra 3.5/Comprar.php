@@ -1,5 +1,42 @@
-<!DOCTYPE HTML>
+<?php
+	include 'ConBD.php';
+	session_start();
+	if(empty($_SESSION["id_cliente"])) { header('Location: InicioS.php'); }
+	$id_horario = $_GET['id_horario'];
 
+	//Crear factura
+    if(isset($_POST['btnActualizar'])) {
+        $cardNumber = $_POST['cardNumber'];
+		$CantTickets = $_POST['CantTickets'];
+        $nombre = $_POST['nombre'];
+		$id_cliente = $_SESSION["id_cliente"];
+		if($cupos_disponibles < $CantTickets){
+			echo '<script>alert("Ha excedido el máximo de tiquetes disponibles, por favor escoja una cifra menor.");</script>';
+		} else {
+			$conexion = Abrir(); Cerrar($conexion3);
+			$sql = "call crearFactura('" . $cardNumber . "', " . $CantTickets . ", " 
+				. $total . ", '" . $nombre . "', '" . $id_cliente . "', " . $id_horario . ")";
+			$conexion-> query($sql);
+			header('Location: Horario1.php');
+			Cerrar($conexion);Cerrar($conexion3);
+		}
+		
+    }
+
+	//Total
+	$conexion2 = Abrir();
+	$sql2 = "call seleccionarHorario3(". $id_horario .")";
+	$respuesta = $conexion2-> query($sql2);
+	$Registro = mysqli_fetch_array($respuesta);
+	$cupos_disponibles = $Registro["cupos_disponibles"];
+	$costo = $Registro["costo"];
+	$total2 = intval($costo);
+	$CantTickets2 = intval($CantTickets);
+	$total = $total2 * $CantTickets2;
+	Cerrar($conexion2);
+?>
+
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -39,9 +76,11 @@
 						</div>
 						<div class="col-xs-8 text-right menu-1">
 							<ul>
-								<li><a href="menu.php">Informacion de Rutas</a></li>
-								<li><a href="Horario.php">Horarios</a></li>
-								<li class="btn-cta"><a href="Reservacion.php"><span>Reserve su espacio!</span></a></li>
+								<!--<li><a href="menu.php">Informacion de Rutas</a></li>-->
+								<li><a href="Horario1.php">Horarios</a></li>
+								<li><a href="menu.php">Información de Rutas</a></li>
+								<li class="btn-cta"><a href="logout.php"><span>Cerrar sesión</span></a></li>
+								<!--<li class="btn-cta"><a href="Reservacion.php"><span>Reserve su espacio!</span></a></li>-->
 							</ul>	
 						</div>
 					</div>
@@ -64,20 +103,20 @@
 					<form>
 						<div class="form-group owner">
 							<label for="owner">Nombre completo</label>
-							<input type="text" class="form-control" id="owner">
+							<input type="text" class="form-control" id="nombre" name="nombre">
 						</div>
 						<div class="form-group" id="cantidad-tickects">
-							<label for="cardNumber">Cantidad de tickets:</label>
-							<input type="number" class="form-control" id="CantTickets">
+							<label for="cardNumber">Cantidad de tickets</label>
+							<input type="number" class="form-control" id="CantTickets" name="CantTickets">
 						</div>
 						<div class="col-2" id="cantidad-tickects">
-							<label for="cardNumber">Total a pagar:</label>
-							<input type="text" class="form-control" id="resultado" readonly="true" name="resultado"  onclick="CalcularPago();" />
+							<label for="cardNumber">Total a pagar por tiquete</label>
+							<input type="text" class="form-control" id="total" readonly="true" name="total"  onclick="CalcularPago();" />
 						</div>
 						<br>
 						<div class="form-group" id="card-number-field">
-							<label for="cardNumber">Numero de tarjeta</label>
-							<input type="text" class="form-control" id="cardNumber">
+							<label for="cardNumber">Número de tarjeta</label>
+							<input type="text" class="form-control" id="cardNumber" name="cardNumber">
 						</div>
 						<div class="form-group CVV">
 							<label for="cvv">CVV</label>
@@ -115,7 +154,7 @@
 						</div>
 						
 						<div class="form-group" id="pay-now">
-							<button type="submit" class="btn btn-primary btn-block" id="confirm-purchase">Confirmar</button>
+							<button type="submit" id="btnActualizar" name="btnActualizar" class="btn btn-primary btn-block" id="confirm-purchase">Confirmar</button>
 						</div>
 					</form>
 				</div>
