@@ -101,7 +101,7 @@
 	<form action="" method="post">
 		<div class="row form-group">
 			<div class="col-md-12">
-				<label for="id" >Numero de identificación</label>
+				<label for="id" >Número de identificación</label>
 				<input type="text" name="id" id="id" class="form-control" placeholder="Numero de identificación" required></input>
 			</div>
 		</div>
@@ -114,15 +114,17 @@
 
 		<div class="row form-group">
 			<div class="col-md-12">
-				<input type="submit" class="btn btn-primary btn-block" value="Iniciar" >
+				<input type="submit" id="registrar" name="registrar" class="btn btn-primary btn-block" value="Iniciar" >
 			</div>
 		</div>
 		<div class="row form-group">
 			<div class="col-md-12">
-				<input type="submit" class="btn btn-primary btn-block" value="Olvide mi contraseña (omitido debido a que no forma parte del foco principal, por consejo del profesor)">
+				<input type="submit" class="btn btn-primary btn-block" value="Olvide mi contraseña">
+				(Estamos omitiendo el olvidé mi contraseña debido a que no forma parte del foco principal, por consejo del profesor) <br>
+				Usuario de prueba: 1. Contraseña de prueba: 5.
 			</div>
 		</div>
-	</form>	
+	</form>
 												</div>
 											</div>
 										</div>
