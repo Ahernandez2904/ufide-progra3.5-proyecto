@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(empty($_SESSION["Perfil"])) { header('Location: InicioS.php'); }
+	if(empty($_SESSION["id_cliente"])) { header('Location: InicioS.php'); }
 ?>
 
 <!DOCTYPE HTML>

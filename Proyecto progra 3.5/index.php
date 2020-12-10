@@ -1,8 +1,11 @@
 <?php
-    include 'ConBD.php';
-	$conexion = Abrir();
+	include 'ConBD.php';
+	session_start();
 	
 	if(isset($_POST['registrar'])) {
+		//Abro conexión
+		$conexion = Abrir();
+
 		//Obtenemos las variables
 		$id = $_POST['id'];
 		$nombre = $_POST['nombre'];
@@ -21,11 +24,11 @@
 		$_SESSION["id_cliente"] = $id;
 		$_SESSION["nombre_cliente"] = $nombre;
 		$_SESSION["correo_cliente"] = $email;
-		
 		header('Location: Horario1.php');
-	}
 
-	Cerrar($conexion);
+		//Cierro conexión
+		Cerrar($conexion);
+	}
 ?>
 
 
