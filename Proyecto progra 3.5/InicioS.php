@@ -1,6 +1,23 @@
 <?php
 	session_start();
-	
+
+	if(isset($_POST['registrar'])) {
+		//Obtenemos las variables
+		$id = $_POST['id'];
+		$contrasena = $_POST['contrasena'];
+
+		//Comprobar inicio de sesión
+		$sql = "call iniciarSesion('" . $id . "', '" . $contrasena . "')";
+		$conexion-> query($sql);
+		
+		//Iniciar sesión
+		$_SESSION["id_cliente"] = $Registro['id_cliente'];
+		$_SESSION["nombre_cliente"] = $Registro['nombre_cliente'];
+		$_SESSION["correo_cliente"] = $Registro['correo_cliente'];
+		
+		header('Location: Horario1.php');
+	}
+
 ?>
 
 <!DOCTYPE HTML>

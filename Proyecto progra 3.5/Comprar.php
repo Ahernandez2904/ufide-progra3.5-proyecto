@@ -20,7 +20,7 @@
 		<script src="js/modernizr-2.6.2.min.js"></script>
 		<script src="js/card1.js"></script>
 	</head>
-	
+
 	<body>
 		
 	<div class="gtco-loader"></div>
@@ -183,35 +183,19 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<!-- countTo -->
 	<script src="js/jquery.countTo.js"></script>
-
 	<!-- Stellar Parallax -->
 	<script src="js/jquery.stellar.min.js"></script>
-
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
-	
 	<script src="js/moment.min.js"></script>
 	<script src="js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/main.js">
-
-	 function CalcularPago()
-	 {
-		
-		var Cant = document.getElementById("CantTickets").value;
-		
-		var resultado = "";
-		
-				
-			resultado = ((parseFloat(Cant)*550).toFixed(2);
-			
-		
-		
-		document.getElementById("resultado").value = resultado;
-	}	
-	
-	
-	
+		function CalcularPago(){
+			var Cant = document.getElementById("CantTickets").value;
+			var resultado = "";	resultado = ((parseFloat(Cant)*550).toFixed(2);			
+			document.getElementById("resultado").value = resultado;
+		}
 	</script>
 
 	</body>

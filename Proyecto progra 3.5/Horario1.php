@@ -1,8 +1,7 @@
 <?php
-  session_start();
-  if(empty($_SESSION["Perfil"])) { header('Location: index.php'); }
+	session_start();
+	if(empty($_SESSION["Perfil"])) { header('Location: InicioS.php'); }
 ?>
-
 
 <!DOCTYPE HTML>
 

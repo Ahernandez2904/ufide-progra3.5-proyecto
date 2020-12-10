@@ -2,9 +2,30 @@
     include 'ConBD.php';
 	$conexion = Abrir();
 	
-	if(isset($_POST['btnComprar'])) {
+	if(isset($_POST['registrar'])) {
+		//Obtenemos las variables
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre'];
+		$telefono = $_POST['telefono'];
+		$email = $_POST['email'];
+		$contrasena = $_POST['contrasena'];
+		$preguntaSegura = $_POST['preguntaSegura'];
+		$respuestaPreguntaSegura = $_POST['respuestaPreguntaSegura'];
+
+		//Crear usuario
+		$sql = "call insertarCliente('" . $id . "', '" . $nombre . "', '" . $telefono . "', '" . $email
+			. "', '" . $contrasena . "', '" . $preguntaSegura . "', '" . $respuestaPreguntaSegura . "')";
+		$conexion-> query($sql);
 		
+		//Iniciar sesión
+		$_SESSION["id_cliente"] = $id;
+		$_SESSION["nombre_cliente"] = $nombre;
+		$_SESSION["correo_cliente"] = $email;
+		
+		header('Location: Horario1.php');
 	}
+
+	Cerrar($conexion);
 ?>
 
 
@@ -91,48 +112,57 @@
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3 class="cursive-font">Regístrate aquí:</h3>
-											<form action="#">
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="id" >Numero de identificación:</label>
-														<input type="text"name="id" id="id" class="form-control" required>
-															
-														</input>
-													</div>
-												</div>
-												
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="Nombre">Nombre completo</label>
-														<input type="text" id="Nombre" class="form-control" required>
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="telefono">Numero telefónico</label>
-														<input type="text" id="telefono" class="form-control" required>
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="Email">Correo electrónico:</label>
-														<input type="email" id="Email" class="form-control" required>
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="Contrasena">Contraseña</label>
-														<input type="Password" id="Apellido2" class="form-control" required>
-													</div>
-												</div>
+	<form action="" method="post">
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="id" >Numero de identificación:</label>
+				<input type="text"name="id" id="id" class="form-control" required>
+				</input>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="Nombre">Nombre completo</label>
+				<input type="text" id="nombre" name="nombre" class="form-control" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="telefono">Numero telefónico</label>
+				<input type="text" id="telefono" name="telefono" class="form-control" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="Email">Correo electrónico</label>
+				<input type="email" id="email" name="email" class="form-control" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="Contrasena">Contraseña</label>
+				<input type="Password" id="contrasena" name="contrasena" class="form-control" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="preguntaSegura">Pregunta segura</label>
+				<input type="text" id="preguntaSegura" name="preguntaSegura" class="form-control" required>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<label for="respuestaPreguntaSegura">Respuesta a la pregunta segura</label>
+				<input type="text" id="respuestaPreguntaSegura" name="respuestaPreguntaSegura" class="form-control" required>
+			</div>
+		</div>
 
-
-												<div class="row form-group">
-													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary btn-block" value="Registrar">
-													</div>
-												</div>
-											</form>	
+		<div class="row form-group">
+			<div class="col-md-12">
+				<input type="submit" class="btn btn-primary btn-block" value="Registrar" id="registrar" name="registrar">
+			</div>
+		</div>
+	</form>	
 										</div>
 
 										
