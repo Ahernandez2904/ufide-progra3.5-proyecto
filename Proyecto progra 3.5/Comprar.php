@@ -16,7 +16,10 @@
 			$conexion = Abrir(); Cerrar($conexion3);
 			$sql = "call crearFactura('" . $cardNumber . "', " . $CantTickets . ", " 
 				. $total . ", '" . $nombre . "', '" . $id_cliente . "', " . $id_horario . ")";
-			$conexion-> query($sql);
+			$conexion-> query($sql); 
+			$nuevaCantidad = $cupos_disponibles - $CantTickets;
+			$sql3 = "call actualizarCantidad(" . $id_horario . " " . $nuevaCantidad . ")";
+			$conexion3-> query($sql3);
 			header('Location: Horario1.php');
 			Cerrar($conexion);Cerrar($conexion3);
 		}
