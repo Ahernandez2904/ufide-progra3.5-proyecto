@@ -1,36 +1,10 @@
 <?php
-
-	include 'ConBD.php';
+    include 'ConBD.php';
 	$conexion = Abrir();
 	
-	//Llamado al procedimiento almacenado
-	//variable $ListaPerfiles
-	//IdPerfil, DescripcionPerfil
-
-  if(isset($_POST['btnAgregar']))
-  {
-	$txtCedula = $_POST['txtCedula'];
-  
-	//$sql = "call AgregarEstudiante('" . $txtCedula . "','" . $txtNombre . "')";
-	$sql = "call AgregarEstudiante('$txtCedula','$txtNombre',$cboPerfil,$txtNota1,$txtNota2,
-		$txtProyecto,$txtPromedio)";
-	
-	$conexion->next_result();
-	
-	if($conexion->query($sql))
-	{
-		header('Location: ejercicio.php');
+	if(isset($_POST['btnComprar'])) {
+		
 	}
-	else
-	{
-		echo $conexion -> error;
-	}
-  
-     
-  }
-
-	Cerrar($conexion); 
-
 ?>
 
 

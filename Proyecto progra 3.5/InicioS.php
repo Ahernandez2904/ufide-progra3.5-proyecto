@@ -1,29 +1,6 @@
 <?php
 	session_start();
-	if(isset($_POST['btnIngresar'])) {
-		include 'ConBD.php';
-		$conexion = Abrir();
-
-		$id = $_POST['id'];
-		$Promedio = "call ConsultarPromedios('$id')"; //La clave
-		$ListaPromedios = $conexion-> query($Promedio);
-		$Registro = mysqli_fetch_array($ListaPromedios);
 	
-		if(empty($Registro)) {
-			echo "Usuario no registrado en el sistema";
-		} else {
-			$_SESSION["Nombre"] = $Registro['Nombre'];
-			$_SESSION["Cedula"] = $Registro['Cedula'];
-			$_SESSION["Perfil"] = $Registro['Perfil_Id'];
-			
-			if($Registro['Perfil_Id'] == 1) {
-				header('refresh:2;url=ejercicio.php');
-			}
-			else {
-				header('refresh:2;url=index.php');
-			}
-		} Cerrar($conexion); 
-	}
 ?>
 
 <!DOCTYPE HTML>
