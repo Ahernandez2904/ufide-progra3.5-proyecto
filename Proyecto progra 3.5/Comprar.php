@@ -4,6 +4,15 @@
 	if(empty($_SESSION["id_cliente"])) { header('Location: InicioS.php'); }
 	$id_horario = $_GET['id_horario'];
 
+	//Total parte1
+	$conexion2 = Abrir();
+	$sql2 = "call seleccionarHorarios3(". $id_horario .")";
+	$respuesta = $conexion2-> query($sql2);
+	$Registro = mysqli_fetch_array($respuesta);
+	$cupos_disponibles = $Registro["cupos_disponibles"];
+	$costo = $Registro["costo"];
+	$total2 = intval($costo);
+
 	//Crear factura
     if(isset($_POST['btnActualizar'])) {
         $cardNumber = $_POST['cardNumber'];
@@ -13,30 +22,22 @@
 		if($cupos_disponibles < $CantTickets){
 			echo '<script>alert("Ha excedido el máximo de tiquetes disponibles, por favor escoja una cifra menor.");</script>';
 		} else {
-			$conexion = Abrir(); Cerrar($conexion3);
-			$sql = "call crearFactura('" . $cardNumber . "', " . $CantTickets . ", " 
+			$conexion = Abrir(); $conexion3= Abrir();
+			$CantTickets2 = intval($CantTickets);
+			$total = $total2 * $CantTickets2;
+			$sql = "call insertarFactura('" . $cardNumber . "', " . $CantTickets . ", " 
 				. $total . ", '" . $nombre . "', '" . $id_cliente . "', " . $id_horario . ")";
 			$conexion-> query($sql); 
 			$nuevaCantidad = $cupos_disponibles - $CantTickets;
-			$sql3 = "call actualizarCantidad(" . $id_horario . " " . $nuevaCantidad . ")";
+			$sql3 = "call actualizarCantidad(" . $id_horario . ", " . $nuevaCantidad . ")";
 			$conexion3-> query($sql3);
 			header('Location: Horario1.php');
+			echo $sql.$sql3;
 			Cerrar($conexion);Cerrar($conexion3);
+			Cerrar($conexion2);
 		}
 		
     }
-
-	//Total
-	$conexion2 = Abrir();
-	$sql2 = "call seleccionarHorario3(". $id_horario .")";
-	$respuesta = $conexion2-> query($sql2);
-	$Registro = mysqli_fetch_array($respuesta);
-	$cupos_disponibles = $Registro["cupos_disponibles"];
-	$costo = $Registro["costo"];
-	$total2 = intval($costo);
-	$CantTickets2 = intval($CantTickets);
-	$total = $total2 * $CantTickets2;
-	Cerrar($conexion2);
 ?>
 
 <!DOCTYPE HTML>
@@ -103,7 +104,7 @@
 					<h2>Comprar Tickets</h2>
 				</div>
 				<div class="payment">
-					<form>
+					<form action="" method="post">
 						<div class="form-group owner">
 							<label for="owner">Nombre completo</label>
 							<input type="text" class="form-control" id="nombre" name="nombre">

@@ -137,7 +137,7 @@
 					echo '<td>'.$fila["cupos_disponibles"].'</td>';
 					echo '<td>'.$fila["lugar_salida"].'</td>';
 					if(intval($fila["cupos_disponibles"]) > 0) {
-						echo '<td><a href="Comprar.php?id_horario='.$fila["id_horario"].'"></a></td>';
+						echo '<td><a href="Comprar.php?id_horario='.$fila["id_horario"].'">Comprar</a></td>';
 					} else { echo '<td>Agotados</td>'; }
 					echo '</tr>';
 				}
